@@ -13,15 +13,6 @@ As with various architectures, the primary purpose of a clean architecture is to
 
 ![Alt Communitaction Flow](/_assets/communication-flow-v6.png)
 
-### Session
-
-After the user logs in, the issued authentication token is stored and used in the web storage. web storage is accessible globally, but the sample code follows the flow above and is controlled by 'Storege' in 'Infrastructures'. this is part of a detailed implementation that can change, and is positioned according to its role to improve maintenance.
-
-### Board
-
-Board posts and comments are fetched through http communication from 'Infrastructures', encapsulated as Board Root Entity including Comment Entity in 'Use Case' and delivered to 'Presenter', and 'Presenter' returns 'Action' with Entity data.  
-In 'View', the Action value is dispatched according to the flow of Redux architecture, and the Dispatcher updates the Store value to notify that it is changed. In View, the 'Entity' value of the Store is re-encapsulated as 'View Model' and is based on the 'View Model' value. Draw a view.
-
 ## Inversion of Control
 
 ![Alt Communitaction Flow](./_assets/inversion-of-control-v2.png)
@@ -63,21 +54,25 @@ The Action Interface of 'Presenter' is also the same.
 │  │  └─ repository-interfaces
 │  └─ dto
 └─ frameworks
-   └─ web
-      ├─ components
-      │  ├─ commons
-      │  ├─ logins
-      │  └─ boards
-      ├─ redux
-      │  ├─ interfaces
-      │  ├─ actions
-      │  ├─ reducers
-      │  └─ store
-      └─ vm
+   └─ react-app
+      ├─ src
+         ├─ components
+         │  ├─ commons
+         │  ├─ logins
+         │  └─ boards
+         ├─ hooks
+         ├─ redux
+         │  ├─ interfaces
+         │  ├─ actions
+         │  ├─ reducers
+         │  └─ store
+         └─ vm
 
 ```
 
 ## Domain
+
+The Domain layer is the most internal and fundamental layer of the Clean Architecture, also called the “Enterprise Business”. It houses the core business rules and the main entities of the application. In this layer, you define the domain entities, which represent the business objects, and implement the essential business rules. These entities and rules are independent of any technical details and should not depend on external frameworks or technologies.
 
 ### Entities
 
@@ -116,6 +111,8 @@ A use case can call objects in the same layer (such as data repositories) or in 
 
 ## Interface Adapters
 
+The Interface Adapters layer sits between the business layers and external layers such as the user interface and external frameworks. Here, you adapt the technical details and input and output interfaces to meet the needs of the business layers. The Interface Adapters layer helps keep the internal layers isolated from external technologies.
+
 The Interface Adapters layer serves as a bridge between the system's core logic and external environments, converting data formats and implementing interfaces for triggering use cases. It houses presenters, views, and controllers and is subject to change with evolving external requirements or technologies.
 
 ### Infrastructures
@@ -134,7 +131,7 @@ The Presenter layer handles requests from the UI, forwarding them to the server.
 
 ## Frameworks & Drivers
 
-The Frameworks & Drivers layer, housing external frameworks, and libraries, serves as the glue code for the Clean
-Architecture pattern. It isolates infrastructure details, allowing easy component replacement without affecting the
-application. This layer, providing system access to external resources, is volatile and subject to frequent changes due
+This is the outermost layer of Clean Architecture, where you deal with the technical details and external technologies with which your system interacts. In this layer, you implement the interaction with external frameworks, such as databases, graphical interface libraries, among others. This layer should be the most flexible to allow the replacement or upgrade of technologies without affecting the internal layers.
+
+The Frameworks & Drivers layer, housing external frameworks, and libraries, serves as the glue code for the Clean Architecture pattern. It isolates infrastructure details, allowing easy component replacement without affecting the application. This layer, providing system access to external resources, is volatile and subject to frequent changes due
 to updates in these resources.
