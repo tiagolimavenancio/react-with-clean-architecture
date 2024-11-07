@@ -24,7 +24,7 @@ In 'View', the Action value is dispatched according to the flow of Redux archite
 
 ## Inversion of Control
 
-![Alt Communitaction Flow](/_assets/inversion-of-control-v2.png)
+![Alt Communitaction Flow](./_assets/inversion-of-control-v2.png)
 
 In the case of 'Repository', it is an adapter layer, so you should not know about 'Repository' in 'Use Case'. Therefore, in 'Use Case', it is implemented through the Repository Interface located in the domain layer, which is then operated through Dependency Injection.  
 The Action Interface of 'Presenter' is also the same.
@@ -77,6 +77,8 @@ The Action Interface of 'Presenter' is also the same.
 
 ```
 
+## Domain
+
 ### Entities
 
 The Entities layer is the heart of Clean Architecture, encapsulating the core business logic and rules through domain objects. Its isolation ensures maintainability and testability, allowing changes in other layers without impacting the business logic. This modularity enhances flexibility and reusability across different systems.
@@ -85,8 +87,8 @@ Entities are one of the core concepts in domain modeling, representing objects t
 
 ### Aggregates
 
-![Aggregate](./images/aggregate.png#gh-light-mode-only)
-![Aggregate](./images/aggregate-dark.png#gh-dark-mode-only)
+![Aggregate](./_assets/aggregate.png#gh-light-mode-only)
+![Aggregate](./_assets/aggregate-dark.png#gh-dark-mode-only)
 
 An Aggregate is a consistency boundary that can include multiple entities and value objects. It encapsulates internal state and controls external access. All modifications must go through the Aggregate Root, which helps manage the complexity of relationships within the model and maintain consistency when services expand or transactions become more complex.
 
