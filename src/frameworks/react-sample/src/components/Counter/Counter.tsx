@@ -1,5 +1,5 @@
-import { useAppDispatch } from "../../hooks/useStore";
-import { decrement, increment } from "../../redux/reducers/counterSlice";
+import { useAppDispatch } from "@hooks/useStore";
+import { decrement, increment } from "@redux/reducers/counterSlice";
 
 export const Counter = () => {
   const dispatch = useAppDispatch();

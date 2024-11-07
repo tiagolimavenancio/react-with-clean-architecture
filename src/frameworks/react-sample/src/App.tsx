@@ -1,5 +1,5 @@
 import { useAppSelector } from "./hooks/useStore";
-import { Counter } from "./components/Counter";
+import { Counter } from "@components/Counter";
 import "./App.css";
 
 function App() {
