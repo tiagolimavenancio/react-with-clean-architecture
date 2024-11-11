@@ -1,15 +1,16 @@
-import { useAppSelector } from "./hooks/useStore";
-import { Counter } from "@components/Counter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Login } from "@pages/login";
+import { Board } from "@pages/board";
 import "./App.css";
 
 function App() {
-  const count = useAppSelector((state) => state.counter.value);
-
   return (
-    <div>
-      <span>This count is {count}</span>
-      <Counter />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Board />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,29 @@
+import * as React from "react";
+import * as S from "./Inputs.style";
+
+type InputProps = {
+  type: string;
+  name: string;
+  placeholder: string;
+  value: string | number;
+  onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  onKeyDown(event: React.KeyboardEvent): void;
+};
+
+const Input: React.FC<InputProps> = (props) => {
+  const { type, name, placeholder, onChange, onKeyDown, value } = props;
+
+  return (
+    <S.Input
+      className={"input"}
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      value={value}
+    />
+  );
+};
+
+export { Input };

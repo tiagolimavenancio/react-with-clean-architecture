@@ -6,7 +6,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
 
     /* Bundler mode */
     "moduleResolution": "Bundler",
@@ -24,11 +24,15 @@
     "noUncheckedSideEffectImports": true,
 
     "paths": {
-      "@components/*": ["components/*"],
-      "@hooks/*": ["hooks/*"],
-      "@redux/*": ["redux/*"],
-      "@pages/*": ["pages/*"],
-      "@src/*": ["*"]
+      "@components/*": ["./src/components/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@di/*": ["./src/di/*"],
+      "@src/*": ["./src/*"],
+
+      "@adapters/*": ["../../adapters/*"],
+      "@domains/*": ["../../domains/*"]
     }
   },
   "include": ["src"]
