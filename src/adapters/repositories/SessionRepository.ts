@@ -7,21 +7,25 @@ class SessionRepository implements ISessionRepository {
   constructor(private readonly http: IHttp, private readonly storage: IStorage) {}
 
   async login(userDTO: IUserDTO): Promise<string> {
-    const response = await this.http.request({
-      method: "POST",
-      url: "http://localhost:7777/login",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {
-        id: userDTO.id,
-        pw: userDTO.pw,
-      },
-    });
+    try {
+      const response = await this.http.request({
+        method: "POST",
+        url: "http://localhost:7777/login",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          id: userDTO.id,
+          pw: userDTO.pw,
+        },
+      });
 
-    if (response?.token) {
-      return response.token;
-    } else {
+      if (response?.token) {
+        return response.token;
+      } else {
+        return "";
+      }
+    } catch (error) {
       return "";
     }
   }
