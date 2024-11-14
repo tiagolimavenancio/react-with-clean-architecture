@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "../context/AuthContext";
-import { Login } from "../pages/login";
+import { AuthProvider } from "context/AuthContext";
+import { Login } from "pages/login";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 const Router = () => {
@@ -9,14 +9,9 @@ const Router = () => {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <div>Board</div>
-              </ProtectedRoute>
-            }
-          />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<div>Board</div>} />
+          </Route>
         </Routes>
       </AuthProvider>
     </BrowserRouter>

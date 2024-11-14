@@ -1,19 +1,20 @@
-import { createContext, ReactNode, useContext, useMemo } from "react";
+import { createContext, ReactNode, useCallback, useContext, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useTokenState } from "hooks/useSessionRecoil";
+import di from "di";
 
 type Props = {
   children?: ReactNode;
 };
 
 type AuthContextProps = {
-  user: object | null;
-  login: (newState: string) => void;
+  token: string;
+  login: (id: string, pw: string) => void;
   logout: () => void;
 };
 
 const initialState = {
-  user: null,
+  token: "",
   login: () => {},
   logout: () => {},
 };
@@ -22,25 +23,40 @@ const AuthContext = createContext<AuthContextProps>(initialState);
 
 export const AuthProvider = ({ children }: Props) => {
   const navigate = useNavigate();
-  const [user, setUser] = useLocalStorage("@App:user", null);
+  const [token, setToken] = useTokenState();
 
-  const login = (user: string) => {
-    setUser(user);
-    navigate("/", { replace: true });
-  };
+  useEffect(() => {
+    (async () => {
+      const storageToken = await di.session.getToken();
+      if (storageToken) {
+        di.session.setToken(storageToken);
+        setToken(storageToken);
+      }
+    })();
+  }, [setToken]);
 
-  const logout = () => {
-    setUser(null);
+  const login = useCallback(
+    async (id: string, pw: string) => {
+      const token = await di.session.login(id, pw);
+      di.session.setToken(token);
+      setToken(token);
+      navigate("/", { replace: true });
+    },
+    [navigate, setToken]
+  );
+
+  const logout = useCallback(() => {
+    di.session.removeToken();
     navigate("/login", { replace: true });
-  };
+  }, [navigate]);
 
   const valueProvider = useMemo(() => {
     return {
-      user,
+      token,
       login,
       logout,
     };
-  }, [user]);
+  }, [login, logout, token]);
 
   return <AuthContext.Provider value={valueProvider}>{children}</AuthContext.Provider>;
 };

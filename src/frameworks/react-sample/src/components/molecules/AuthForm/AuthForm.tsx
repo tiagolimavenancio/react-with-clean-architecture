@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Input } from "components/atoms/Input";
+import { Button } from "components/atoms/Button";
 import * as S from "./AuthForm.style";
-import { Input } from "../../atoms/Input";
-import { Button } from "../../atoms/Button";
 
 type AuthFormProps = {
   accredit(id: string, pw: string): void;

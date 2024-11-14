@@ -1,5 +1,5 @@
-import AuthForm from "../../components/molecules/AuthForm/AuthForm";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuthContext } from "context/AuthContext";
+import AuthForm from "components/molecules/AuthForm/AuthForm";
 import * as S from "./Login.style";
 
 function Login() {
@@ -7,8 +7,7 @@ function Login() {
 
   const handleClickAccreditation = async (id: string, pw: string) => {
     if (id && pw) {
-      const token = String(new Date(Date.now() + 60 * 60 * 1000));
-      await login(token);
+      await login(id, pw);
     } else {
       console.log("Invalid data!");
     }

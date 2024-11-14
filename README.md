@@ -34,7 +34,7 @@ The Action Interface of 'Presenter' is also the same.
 - Vite
 - Typescript
 - React
-- Redux
+- Recoil
 - Styled Components
 
 ### Test
@@ -94,13 +94,13 @@ An Aggregate is a consistency boundary that can include multiple entities and va
 
 ### Data Transfer Objects (DTO´s)
 
-DTO (Data Transfer Object) is a software pattern designed for transferring data between layers of an application. It basically involves understanding how information flows within a system.
-
-Data Transfer Objects (DTOs) serve as simple data containers, specifically designed to transfer data between layers or processes while adhering to the principles of encapsulation and separation of concerns.
+DTO (Data Transfer Object) is a software pattern designed for transferring data between layers of an application. It basically involves understanding how information flows within a system. Data Transfer Objects (DTOs) serve as simple data containers, specifically designed to transfer data between layers or processes while adhering to the principles of encapsulation and separation of concerns.
 
 DTO is a design pattern used in programming to transfer data between different layers of an application. It allows you to encapsulate data in a simple object that does not contain business logic, and is used to improve communication efficiency and reduce coupling between different parts of the system.
 
 Although the main reason for using a Data Transfer Object is to group what would otherwise be several remote calls into a single call, it is worth mentioning that another advantage is the encapsulation of the serialization logic for transferring data over the network. It also decouples the domain models from the presentation layer, allowing both to change independently.
+
+These response models, represent projections of domain models (entities and value objects) directly manipulated by a use case. They are essentially DTOs destined to convey the information needed for the presentation of the outcome of a use case, without actually exposing the domain models to outer layers.
 
 ### Use Cases
 
@@ -109,6 +109,8 @@ Use Cases define the interactions between users and the service, leveraging doma
 The Use Cases layer defines the application's business actions and rules, detailing system behavior in response to external actor interactions.
 
 A use case is a business logic unit. It is a class that must have an `execute` method which will be called by controllers. It may have a constructor to define its dependencies (concrete implementations - a.k.a. _adapters_ - of the _port_ objects) or its execution context.
+
+Use Case is responsible for “interacting” (to use Robert C. Martin’s original terminology) with the Domain Entities layer, triggering actual business logic processing by aggregates. To perform its work Use Case must involve communication with one or several secondary adapters, which is, of course, done via output ports. For instance, a use case will most certainly need to communicate with a persistence gateway to materialize one or several aggregate roots, to which it will delegate actual state modification.
 
 **Be careful! A use case must have only one precise business responsibility!**
 
@@ -130,7 +132,17 @@ Similarly, in the sample project, the Repository layer performs POST, GET, PUT, 
 
 ### Presenters
 
-The Presenter layer handles requests from the UI, forwarding them to the server. It also converts entity data into View Models used in the UI, responding appropriately based on user requests.
+The Presenter layer handles requests from the UI, forwarding them to the server. It also converts entity data into View Models used in the UI, responding appropriately based on user requests. Flow of control in Clean Architecture proceeds from a controller towards a use case, and finally, exits through a presenter. Important thing to remember, is that Controller is a primary adapter, where as Presenter is a secondary adapter. Indeed, the only component which deals directly with Presenters is Use Case. It is a use case which, depending on the outcome of business logic processing of a specific business scenario, can decide to invoke this or that presentation method.
+
+It is a sole responsibility of Presenter to present the results of business logic processing done by Use Case back to the user. Presenter acts as a bridge between Use Case layer and View layer. Generally, a view (from the outermost layer of CA) cannot directly manipulate domain models, which is a prerogative of a use case. This is because, otherwise, there is a danger of leaking business functionality into a layer which is not sufficiently stable or protected enough to handle it.
+
+### Controllers
+
+The Controller is responsible for processing the input from a user (or a client) and deciding on which particular use case to perform. The controller takes user input, converts it into the request model defined by the use case interactor and passes this to the same. The request object accepted by the controller is defined by the controller. We do NOT want the controller to depend on the view or types defined in the framework circle.
+
+Such request objects are usually simple data transfer objects (DTO). Depending on the view technology a request object may contain typed information (e.g. WPF) or just strings (e.g. HTML). It is the role of the controller to convert the given information into a format which is most convenient for and defined by the use case interactor. For that the controller may have some simple if-then-else or parser logic but we do not want to have any processing logic inside the controller.
+
+Finally the controller simply calls an API on the use case interactor to trigger the processing.
 
 ## Frameworks & Drivers
 
