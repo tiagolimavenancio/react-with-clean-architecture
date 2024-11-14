@@ -1,9 +1,11 @@
-import SessionUseCase from "domains/useCases/SessionUseCase";
 import IRepositories from "di/interfaces/IRepositories";
 import IUseCases from "di/interfaces/IUseCases";
+import SessionUseCase from "domains/useCases/SessionUseCase";
+import BoardUseCase from "domains/useCases/BoardUseCase";
 
 export default (repositories: IRepositories): IUseCases => {
   return {
+    board: new BoardUseCase(repositories.board),
     session: new SessionUseCase(repositories.session),
   };
 };

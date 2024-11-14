@@ -10,5 +10,6 @@ const cUseCases = _useCases(cRepositories);
 const cPresenters = presenters(cUseCases);
 
 export default {
+  board: cPresenters.board,
   session: cPresenters.session,
 } as IPresenters;
