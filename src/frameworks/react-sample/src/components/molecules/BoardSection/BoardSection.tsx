@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@hooks/useStore";
-import { IBoardEntity } from "@domains/aggregates/interfaces/IBoard";
-import di from "../../../di";
-import { IBoardStateGroup } from "../../../redux/interfaces/IBoard";
-import BoardVM from "../../../vm/Board";
-import { BoardList } from "../../atoms/BoardList";
-import { AddBoard } from "../../atoms/AddBoard";
+import di from "di";
+import { BoardList } from "components/atoms/BoardList";
+import { AddBoard } from "components/atoms/AddBoard";
+import { IBoardEntity } from "domains/aggregates/interfaces/IBoard";
+import { useAppDispatch, useAppSelector } from "hooks/useStore";
+import { IBoardStateGroup } from "redux/interfaces/IBoard";
+import BoardVM from "vm/IBoardVM";
 import * as S from "./BoardSection.style";
 
 const BoardSection: React.FC = () => {
@@ -25,6 +25,7 @@ const BoardSection: React.FC = () => {
 
   const insertFnc = async (author: string, content: string) => {
     const resStatus = await di.board.insertBoard(author, content);
+
     if (resStatus) {
       const board = await di.board.getBoards();
       dispatch(board);

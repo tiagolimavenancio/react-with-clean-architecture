@@ -1,4 +1,4 @@
-import { IStorage } from "@adapters/infrastructures/interfaces/IStorage";
+import { IStorage } from "./interfaces/IStorage";
 
 class WebStorage implements IStorage {
   private storage: any;

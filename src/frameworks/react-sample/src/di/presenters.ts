@@ -1,7 +1,7 @@
+import BoardPresenter from "adapters/presenters/BoardPresenter";
+import SessionPresenter from "adapters/presenters/SessionPresenter";
 import IUseCases from "./interfaces/IUseCases";
 import IActions from "./interfaces/IActions";
-import BoardPresenter from "@adapters/presenters/Board";
-import SessionPresenter from "@adapters/presenters/Session";
 
 export default (useCases: IUseCases, actions: IActions) => {
   return {

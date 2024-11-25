@@ -1,6 +1,6 @@
-import { IUserDTO } from "@domains/dto/UserDTO";
-import { ISessionUseCase } from "@domains/useCases/interfaces/ISession";
-import { ISessionRepository } from "@domains/useCases/repositories-interfaces/ISession";
+import { IUserDTO } from "../dto/interfaces/IUserDTO";
+import { ISessionUseCase } from "./interfaces/ISessionUseCase";
+import { ISessionRepository } from "./repository-interfaces/ISessionRepository";
 
 class SessionUseCase implements ISessionUseCase {
   constructor(private readonly sessionRepo: ISessionRepository) {}

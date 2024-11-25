@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import di from "@src/di";
-import { Button } from "../Button";
+import di from "di";
+import { Button } from "components/atoms/Button";
 import * as S from "./Header.style";
 
 const Header = () => {

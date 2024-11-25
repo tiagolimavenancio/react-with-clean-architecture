@@ -1,4 +1,4 @@
-import { IUserDTO } from "@domains/dto/UserDTO";
+import { IUserDTO } from "../../dto/interfaces/IUserDTO";
 
 export interface ISessionUseCase {
   login(userDTO: IUserDTO): Promise<string>;

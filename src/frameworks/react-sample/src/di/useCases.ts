@@ -1,5 +1,5 @@
-import SessionUseCase from "@domains/useCases/Session";
-import BoardUseCase from "@domains/useCases/Board";
+import SessionUseCase from "domains/useCases/SessionUseCase";
+import BoardUseCase from "domains/useCases/BoardUseCase";
 import IUseCases from "./interfaces/IUseCases";
 import IRepositories from "./interfaces/IRepositories";
 

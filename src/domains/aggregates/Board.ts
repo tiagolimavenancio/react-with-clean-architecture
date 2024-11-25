@@ -1,5 +1,5 @@
-import { IBoardData, IBoardEntity } from "@domains/aggregates/interfaces/IBoard";
-import { ICommentEntity } from "@domains/entities/interfaces/IComment";
+import { ICommentEntity } from "../entities/interfaces/ICommentEntity";
+import { IBoardData, IBoardEntity } from "./interfaces/IBoardEntity";
 
 class Board implements IBoardEntity {
   private readonly _id: number;

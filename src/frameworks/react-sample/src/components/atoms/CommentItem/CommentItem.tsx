@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ICommentEntity } from "@domains/entities/interfaces/IComment";
+import { ICommentEntity } from "domains/entities/interfaces/IComment";
 import * as S from "./CommentItem.style";
 
 type ICommentItemProps = {

@@ -24,16 +24,11 @@
     "noUncheckedSideEffectImports": true,
 
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@redux/*": ["./src/redux/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@di/*": ["./src/di/*"],
-      "@src/*": ["./src/*"],
+      "*": ["./src/*"],
 
-      "@adapters/*": ["../../adapters/*"],
-      "@domains/*": ["../../domains/*"]
+      "adapters/*": ["../../adapters/*"],
+      "domains/*": ["../../domains/*"]
     }
   },
-  "include": ["src"]
+  "exclude": ["node_modules"]
 }

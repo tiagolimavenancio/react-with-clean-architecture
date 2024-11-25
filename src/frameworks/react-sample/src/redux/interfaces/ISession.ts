@@ -1,4 +1,4 @@
-import { IToken, ILoginAction } from "@adapters/presenters/action-interface/ISession";
+import { IToken, ILoginAction } from "adapters/presenters/interfaces/ISessionPresenter";
 
 export const LOGIN = "LOGIN";
 

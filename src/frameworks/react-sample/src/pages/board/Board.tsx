@@ -1,5 +1,5 @@
-import { Header } from "@components/atoms/Header/Header";
-import { BoardSection } from "@components/molecules/BoardSection";
+import { Header } from "components/atoms/Header/Header";
+import { BoardSection } from "components/molecules/BoardSection";
 import * as S from "./Board.style";
 
 function Board() {

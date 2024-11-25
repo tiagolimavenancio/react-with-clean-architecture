@@ -1,4 +1,4 @@
-import { ICommentEntity } from "@domains/entities/interfaces/IComment";
+import { ICommentEntity } from "../../entities/interfaces/ICommentEntity";
 
 export interface IBoardEntity {
   id: number;

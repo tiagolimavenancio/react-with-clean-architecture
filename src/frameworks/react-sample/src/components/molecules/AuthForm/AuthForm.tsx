@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Input } from "@components/atoms/Input";
-import { Button } from "@components/atoms/Button";
+import { Input } from "components/atoms/Input";
+import { Button } from "components/atoms/Button";
 import * as S from "./AuthForm.style";
 
 type AuthFormProps = {
@@ -28,7 +28,7 @@ const AuthForm = ({ btnValue, accredit }: AuthFormProps) => {
   };
 
   return (
-    <div>
+    <S.Container>
       <S.Row>
         <Input
           type="text"
@@ -50,9 +50,9 @@ const AuthForm = ({ btnValue, accredit }: AuthFormProps) => {
         />
       </S.Row>
       <S.Row>
-        <Button variant="long" type="button" onClick={handleClickAccredit} value={btnValue} />
+        <Button variant="long" type="button" value={btnValue} onClick={handleClickAccredit} />
       </S.Row>
-    </div>
+    </S.Container>
   );
 };
 

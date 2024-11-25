@@ -1,4 +1,4 @@
-import { ICommentData, ICommentEntity } from "./interfaces/IComment";
+import { ICommentData, ICommentEntity } from "./interfaces/ICommentEntity";
 
 class Comment implements ICommentEntity {
   private readonly _id: number;

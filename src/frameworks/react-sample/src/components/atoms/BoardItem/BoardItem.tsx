@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IBoardData } from "@domains/aggregates/interfaces/IBoard";
+import { IBoardData } from "domains/aggregates/interfaces/IBoard";
 import * as S from "./BoardItem.style";
 
 type IBoardItemProps = {

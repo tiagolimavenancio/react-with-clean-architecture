@@ -1,5 +1,5 @@
-import { IBoardActions } from "@adapters/presenters/action-interface/IBoard";
-import { ISessionActions } from "@adapters/presenters/action-interface/ISession";
+import { IBoardActions } from "adapters/presenters/interfaces/IBoardPresenter";
+import { ISessionActions } from "adapters/presenters/interfaces/ISessionPresenter";
 
 export default interface IActions {
   session: ISessionActions;

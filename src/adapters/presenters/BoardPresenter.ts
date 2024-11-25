@@ -1,7 +1,6 @@
-import { IBoardAction, IBoardActions } from "@adapters/presenters/action-interface/IBoard";
-import { IBoardPresenter } from "@adapters/presenters/interfaces/IBoard";
-import { IBoardEntity } from "@domains/aggregates/interfaces/IBoard";
-import { IBoardUseCase } from "@domains/useCases/interfaces/IBoard";
+import { IBoardAction, IBoardActions, IBoardPresenter } from "./interfaces/IBoardPresenter";
+import { IBoardEntity } from "../../domains/aggregates/interfaces/IBoardEntity";
+import { IBoardUseCase } from "../../domains/useCases/interfaces/IBoardUseCase";
 
 class BoardPresenter implements IBoardPresenter {
   constructor(private readonly useCase: IBoardUseCase, private readonly action: IBoardActions) {}

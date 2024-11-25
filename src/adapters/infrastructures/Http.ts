@@ -1,4 +1,4 @@
-import { IHttp, IRequestOption } from "@adapters/infrastructures/interfaces/IHttp";
+import { IHttp, IRequestOption } from "./interfaces/IHttp";
 
 class Http implements IHttp {
   async request(req: IRequestOption): Promise<any> {

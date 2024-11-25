@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Input } from "../Input";
-import { Button } from "../Button";
+import { Input } from "components/atoms/Input";
+import { Button } from "components/atoms/Button";
 import * as S from "./AddBoard.style";
 
 type IAddBoardProps = {

@@ -1,7 +1,6 @@
-import { ILoginAction, ISessionActions } from "@adapters/presenters/action-interface/ISession";
-import { ISessionPresenter } from "@adapters/presenters/interfaces/ISession";
-import UserDTO from "@domains/dto/UserDTO";
-import { ISessionUseCase } from "@domains/useCases/interfaces/ISession";
+import { ILoginAction, ISessionActions, ISessionPresenter } from "./interfaces/ISessionPresenter";
+import { ISessionUseCase } from "../../domains/useCases/interfaces/ISessionUseCase";
+import UserDTO from "../../domains/dto/UserDTO";
 
 class SessionPresenter implements ISessionPresenter {
   constructor(
@@ -9,9 +8,8 @@ class SessionPresenter implements ISessionPresenter {
     private readonly action: ISessionActions
   ) {}
 
-  async login(id: string, pw: string): Promise<ILoginAction> {
-    const token = await this.useCase.login(new UserDTO({ id, password: pw }));
-    return this.setToken(token);
+  async login(id: string, pw: string): Promise<string> {
+    return this.useCase.login(new UserDTO({ id, pw }));
   }
 
   getToken(): Promise<string> {
@@ -19,6 +17,7 @@ class SessionPresenter implements ISessionPresenter {
   }
 
   setToken(token: string): ILoginAction {
+    this.useCase.setToken(token);
     return this.action.setToken(token);
   }
 

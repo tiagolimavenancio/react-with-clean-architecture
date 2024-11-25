@@ -1,8 +1,8 @@
-import Board from "@domains/aggregates/Board";
-import Comment from "@domains/entities/Comment";
-import { IBoardEntity } from "@domains/aggregates/interfaces/IBoard";
-import { IBoardUseCase } from "@domains/useCases/interfaces/IBoard";
-import { IBoardRepository } from "@domains/useCases/repositories-interfaces/IBoard";
+import { IBoardUseCase } from "./interfaces/IBoardUseCase";
+import { IBoardRepository } from "./repository-interfaces/IBoardRepository";
+import { IBoardEntity } from "../aggregates/interfaces/IBoardEntity";
+import Board from "../aggregates/Board";
+import Comment from "../entities/Comment";
 
 class BoardUseCase implements IBoardUseCase {
   constructor(private readonly boardRepo: IBoardRepository) {}

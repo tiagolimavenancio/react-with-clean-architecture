@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Http from "adapters/infrastructures/Http";
+import WebStorage from "adapters/infrastructures/WebStorage";
 import IInfrastructures from "./interfaces/IInfrastructures";
-import Http from "@adapters/infrastructures/Http";
-import WebStorage from "@adapters/infrastructures/WebStorage";
 
 export default (): IInfrastructures => {
   return {

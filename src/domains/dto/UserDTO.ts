@@ -1,20 +1,12 @@
-export interface IUserParams {
-  id: string;
-  password: string;
-}
-
-export interface IUserDTO {
-  readonly id: string;
-  readonly password: string;
-}
+import { IUserDTO, IUserParams } from "./interfaces/IUserDTO";
 
 class UserDTO implements IUserDTO {
   readonly id: string;
-  readonly password: string;
+  readonly pw: string;
 
-  constructor(params: IUserParams) {
-    this.id = params.id;
-    this.password = params.password;
+  constructor(param: IUserParams) {
+    this.id = param.id;
+    this.pw = param.pw;
   }
 }
 

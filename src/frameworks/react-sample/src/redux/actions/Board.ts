@@ -1,5 +1,5 @@
-import { IBoardEntity } from "@domains/aggregates/interfaces/IBoard";
-import { IBoardAction, IBoardActions } from "@adapters/presenters/action-interface/IBoard";
+import { IBoardEntity } from "domains/aggregates/interfaces/IBoardEntity";
+import { IBoardAction, IBoardActions } from "adapters/presenters/interfaces/IBoardPresenter";
 import { GET_BOARD } from "../interfaces/IBoard";
 
 class BoardActions implements IBoardActions {

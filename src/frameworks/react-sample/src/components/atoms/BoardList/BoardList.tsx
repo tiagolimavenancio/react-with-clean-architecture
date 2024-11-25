@@ -1,7 +1,7 @@
 import * as React from "react";
-import { BoardItem } from "../BoardItem";
-import { CommentItem } from "../CommentItem";
-import { IBoardVM } from "../../../vm/Board";
+import { BoardItem } from "components/atoms/BoardItem";
+import { CommentItem } from "components/atoms/CommentItem";
+import { IBoardVM } from "vm/IBoardVM";
 import * as S from "./BoardList.style";
 
 type IBoardListProps = {

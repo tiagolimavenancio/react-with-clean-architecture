@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBoardAction, IBoardList } from "@adapters/presenters/action-interface/IBoard";
+import { IBoardAction, IBoardList } from "adapters/presenters/interfaces/IBoardPresenter";
 
 const initialState: IBoardList = {
   list: [],
@@ -16,4 +16,5 @@ const boardSlice = createSlice({
 });
 
 export const { getBoard } = boardSlice.actions;
+
 export default boardSlice.reducer;
