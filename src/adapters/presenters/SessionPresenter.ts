@@ -1,4 +1,4 @@
-import { ISessionUseCase } from "domains/useCases/interfaces/ISessionUseCase";
+import { ISessionUseCase } from "../../domains/useCases/interfaces/ISessionUseCase";
 import { ISessionPresenter } from "./interfaces/ISessionPresenter";
 import UserDTO from "../../domains/dto/UserDTO";
 

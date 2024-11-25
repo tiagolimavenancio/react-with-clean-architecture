@@ -1,3 +1,5 @@
+import { IBoardEntity } from "domains/aggregates/interfaces/IBoardEntity";
+import { ICommentEntity } from "domains/entities/interfaces/ICommentEntity";
 export interface IBoardVM {
   id: number;
   author: string;
